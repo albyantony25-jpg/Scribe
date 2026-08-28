@@ -4,7 +4,7 @@ Scribe is a Retrieval-Augmented Generation (RAG) system that lets users upload P
 
 This project is being built incrementally over 14 days as a hands-on AI engineering learning project — every component is implemented, understood, and explained before moving to the next.
 
-> **Status:** 🚧 In Progress — Day 1 of 14 complete.
+> **Status:** 🚧 In Progress 
 
 ---
 
@@ -106,7 +106,7 @@ Visit `http://127.0.0.1:8000/docs` for interactive API docs (Swagger UI).
 ## Progress
 
 - [x] **Day 1** — FastAPI backend foundations (`/health`, `/documents`, `/chat` stubs, layered architecture)
-- [ ] Day 2 — Document ingestion (PyMuPDF, text extraction)
+- [x] Day 2 — Document ingestion (PyMuPDF, text extraction)
 - [ ] Day 3–4 — Database + PostgreSQL setup
 - [ ] Day 5 — Chunking pipeline
 - [ ] Day 6 — Embedding generation
