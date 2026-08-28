@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, UploadFile, File, HTTPException
 from app.schemas.models import HealthResponse, DocumentUploadResponse, ChatRequest, ChatResponse
 from app.services import document_service, chat_service
 
@@ -9,10 +9,12 @@ def health_check():
     return HealthResponse(status="ok", message="Scribe API is running.")
 
 @router.post("/documents", response_model=DocumentUploadResponse)
-def upload_document():
-    # In a real scenario, this would accept an UploadFile.
-    # For the Day 1 stub, we just simulate processing a dummy file.
-    return document_service.process_document("dummy_file.pdf")
+async def upload_document(file: UploadFile = File(...)):
+    if not file.filename.endswith(".pdf"):
+        raise HTTPException(status_code=400, detail="Only PDF files are supported.")
+        
+    content = await file.read()
+    return document_service.process_document(content, file.filename)
 
 @router.post("/chat", response_model=ChatResponse)
 def chat(request: ChatRequest):
